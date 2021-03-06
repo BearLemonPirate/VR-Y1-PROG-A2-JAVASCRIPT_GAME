@@ -1,0 +1,65 @@
+body {
+    background-color: #6b6963;
+    font-size: 0px;
+}
+
+h1 {
+    font-size: 60px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: aqua;
+
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    color: crimson;
+
+    text-align: center;
+    line-height: 0%;
+}
+
+h3 {
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    color: crimson;
+}
+
+#div_title {
+    width: 100%;
+    height: 15%;
+    background-color:#191e1f;
+}
+
+#div_score {
+    width: 50%;
+    height: 10%;
+    margin: auto;
+    background-color: burlywood;
+}
+
+#div_game {
+    width: 70%;
+    height: 55%;
+    margin: auto;
+    background-color: darkolivegreen;
+}
+
+#div_footer {
+ width: 100%;
+ height: 20%;
+ background-color: gold;
+}
+
+#div_footer_lives {
+    width: 30%;
+    margin-left: 10%;
+    background-color: deeppink;
+}
+
+#div_footer_rules {
+    width: 30%;
+    margin-right: 10%;
+    background-color: darkslategray;
+}

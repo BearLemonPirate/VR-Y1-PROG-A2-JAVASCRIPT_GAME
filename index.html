@@ -4,23 +4,70 @@
 
     <head>
 
+        <meta charset="UTF-8">
+
         <title>
             Mini-Game Survival | How long can you survive?...
         </title>
 
+        <link rel="stylesheet" href="main.css">
+
+        <script src = "game_coord.js" id="head_script_setup node">
+            //set up node score server and set games using game coord script
+        </script>
+
     </head>
 
-    <body style="background-color: #6b6963;">
+    <body>
 
-        <!-- -->
+        <!--Upper title div class containing title and description-->
+        <div id="div_title">
+            <H1>
+                Mini-Game Survival:  How long can you last
+            </H1>
 
-        <!-- -->
+            <H2>
+                Play as many minigames as you can without losing all your lives.  Each loss is worth 1 life!
+            </H2>
+        </div>
 
-        <!-- -->
 
-        <!-- -->
+        
+        <!--div class for score function using node-->
+        <div id="div_score">
+            <H3 id="score_val">
+                Score: 0000
+            </H3>
+
+            <script>
+                //request score from node server
+            </script>
+        </div>
+
+
+
+        <!--div class for main gameplay player in centre of screen-->
+        <div id="div_game">
+
+        </div>
+
+
+
+        <!--div class for lives icon and rules active button-->
+        <div id="div_footer">
+
+            <div id="div_footer_lives">
+                <p>picture of a heart or summat</p>
+            </div>
+
+            <div id="div_footer_rules">
+                <p>big button and ting that scrolls down</p>
+            </div>
+
+        </div>
+
+
 
     </body>
 
-    <script src = "game_coord.js"></script>
 </html>
