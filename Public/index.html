@@ -19,8 +19,9 @@
 
     <body>
 
+
         <!--Upper title div class containing title and description-->
-        <div id="div_title">
+        <div class="blocks" id="div_title">
             <H1>
                 Mini-Game Survival:  How long can you last
             </H1>
@@ -31,9 +32,11 @@
         </div>
 
 
-        
+        <div class="spacer"></div>
+
+
         <!--div class for score function using node-->
-        <div id="div_score">
+        <div class="blocks" id="div_score">
             <H3 id="score_val">
                 Score: 0000
             </H3>
@@ -44,27 +47,56 @@
         </div>
 
 
+        <div class="spacer"></div>
+
 
         <!--div class for main gameplay player in centre of screen-->
-        <div id="div_game">
-
+        <div class="blocks" id="div_game">
+                If you can see this the game hasnt loaded yet...
         </div>
 
+
+        <div class="spacer"></div>
 
 
         <!--div class for lives icon and rules active button-->
-        <div id="div_footer">
+        <div class="blocks" id="div_footer">
+            <img id="footer_lives_img" src="linkhere">
 
-            <div id="div_footer_lives">
-                <p>picture of a heart or summat</p>
-            </div>
+            <P id="footer_lives">
+                Lives remaining: 5
+            </P>
 
-            <div id="div_footer_rules">
-                <p>big button and ting that scrolls down</p>
-            </div>
-
+            <button type="button" id="footer_rules_button" onclick="window.scrollTo({top: 1000, behavior: 'smooth'})">
+                big button
+            </button>
         </div>
 
+
+        <div class="spacer"></div>
+
+
+        <div class="blocks" id="div_rules_title">
+            <H3>
+                'ere is sum rools
+            </H3>
+        </div>
+
+
+        <div class="spacer"></div>
+
+
+        <div class="blocks" id="div_rules">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+            </ul>
+        </div>
 
 
     </body>

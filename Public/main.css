@@ -1,65 +1,107 @@
 body {
-    background-color: #6b6963;
-    font-size: 0px;
+    background-color: #c2c2c2;
+    margin: 0px;
 }
 
 h1 {
     font-size: 60px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: aqua;
+    color: #dddddd;
 
     text-align: center;
+    letter-spacing: 6px;
 }
 
 h2 {
-    font-size: 20px;
+    font-size: 30px;
     font-family: 'Courier New', Courier, monospace;
-    color: crimson;
+    color: #c5660c;
 
     text-align: center;
     line-height: 0%;
 }
 
 h3 {
-    font-size: 20px;
-    font-family: 'Courier New', Courier, monospace;
-    color: crimson;
+    font-size: 52px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #c5660c;
+    letter-spacing: 3px;
+}
+
+li + li {
+    margin-top: 30px;
+  }
+
+.blocks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spacer {
+    height: 5px;
 }
 
 #div_title {
     width: 100%;
     height: 15%;
-    background-color:#191e1f;
+    background-color:#131313;
+
+    display: block;
+    text-align: center;
+    align-items: baseline;
 }
 
 #div_score {
     width: 50%;
     height: 10%;
     margin: auto;
-    background-color: burlywood;
+    background-color: #696d6b;
 }
 
 #div_game {
     width: 70%;
     height: 55%;
     margin: auto;
-    background-color: darkolivegreen;
+    background-color:#222222;
+    
+    color: #c5660c;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
 }
 
 #div_footer {
  width: 100%;
  height: 20%;
- background-color: gold;
+ background-color: #c5660c;
 }
 
-#div_footer_lives {
-    width: 30%;
-    margin-left: 10%;
-    background-color: deeppink;
+#footer_lives_img {
+    margin-block-start: 10%;
 }
 
-#div_footer_rules {
-    width: 30%;
+#footer_lives {
+    font-size: 20px;
+    margin-left: 30%;
+}
+
+#footer_rules_button {
+    font-size: 20px;
     margin-right: 10%;
-    background-color: darkslategray;
+}
+
+#div_rules_title {
+    width: 50%;
+    height: 20%;
+    margin: auto;
+    background-color: #131313;
+   }
+
+#div_rules {
+    width: 100%;
+    height: 80%;
+    background-color: #696d6b;
+
+    font-size: 28px;
+    font-family: 'Courier New', Courier, monospace;
 }
