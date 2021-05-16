@@ -6,10 +6,12 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
+const script = (__dirname + 'game_coord.js');
+
 app.use(express.static('Public'));
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.sendFile(game_coord.js)
 });
 
 app.listen(PORT,);
