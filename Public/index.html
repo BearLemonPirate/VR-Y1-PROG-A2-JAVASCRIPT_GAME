@@ -123,18 +123,12 @@
         </div>
 
         <script type="text/javascript">
-            
-            //document.getElementById("js_block_1").addEventListener("click", chosen_square(1));
-            //document.getElementById("js_block_2").addEventListener("click", chosen_square(2));
-            //document.getElementById("js_block_3").addEventListener("click", chosen_square(3));
-            //document.getElementById("js_block_4").addEventListener("click", chosen_square(4));
-            //document.getElementById("js_block_5").addEventListener("click", chosen_square(5));
-            //document.getElementById("js_block_6").addEventListener("click", chosen_square(6));
 
             //chosen square function - called when the player selects a square, calls score or lives if right or wrong
             function chosen_square (square_id) {
                 //alert(square_id);
 
+                //lots of console logs for testing purposes
                 console.log("starting chosen_square")
                 
                 var chosen_sqr_number = document.getElementById("js_block_" + square_id)
@@ -146,6 +140,7 @@
                 var chosen_sqr_hex = RGB_to_HEX(chosen_sqr_number.style.background);
                 console.log("chosen square | chosen square hex code is... " +chosen_sqr_hex)
 
+                //if statements for correct or incorrect guesses, plus alert functions
                 if (chosen_sqr_hex == correct_hex_code) {
                     alert("You chose correctly!!!");
                     update_score (1);
@@ -161,8 +156,11 @@
 
                 console.log("starting update_score")
 
+                //gets the text from the HTML score and converts it to number format, then adds to it
                 var new_score = Number(document.getElementById("score_val").textContent) + update_amount
+                //sets the HTML score to the new score we added together above
                 document.getElementById("score_val").innerHTML = new_score;
+                //starts a new round now this one has been won and points given
                 new_round();
             }
 
@@ -171,21 +169,24 @@
 
                 console.log("starting update_lives")
 
+                //fetches the current number of lives
                 var lives = Number(document.getElementById("footer_lives").textContent)
 
+                //if statements to detirmine adding or taking away lives, adding used for resetting
                 if (update_direction == "-") {
                     lives = lives - update_amount;
-                    console.log("removed 1 life")
+                    console.log("removed live(s)")
                 }
 
                 if (update_direction == "+") {
                     lives = lives + update_amount;
-                    console.log("added 1 life")
+                    console.log("added live(s)")
                 }
 
                 //write new lives into place using ID
                 document.getElementById("footer_lives").innerHTML = lives;
 
+                //calls check_lives function to make sure this loss hasnt got rid of the players last life
                 check_lives ();
             }
 
@@ -194,22 +195,26 @@
 
                 console.log("starting check_lives")
 
+                //fetches current number of lives
                 var lives = Number(document.getElementById("footer_lives").textContent)
 
+                //if lives are over 10, calls an alert to flag an error (should go over 10)
                 if (lives > 10) {
-                    console.log("lives check | over 5 lives")
-                    alert("lives = >5 -- fuck have you done to me code spongebob me boy??!?!");
+                    console.log("lives check | over 10 lives")
+                    //alert("lives = >5 -- fuck have you done to me code spongebob me boy??!?!");
                 }
 
+                //if lives are in a range from 0 to 10, then carry on to new round
                 if (lives <= 10 && lives >=1) {
                     console.log("lives check | between 1 and 5 lives")
-                    alert("lives between 1 and 10 -- seems legit");
+                    //alert("lives between 1 and 10 -- seems legit");
                     new_round ();
                 }
 
+                //if lives are at zero (or below somehow), then add more lives as a reset (needs to reset score eventually)
                 if (lives <= 0) {
                     console.log("lives check | zero or fewer lives")
-                    alert("lives = 0 -- gotta refresh bro");
+                    //alert("lives = 0 -- gotta refresh bro");
                     update_lives(5, "+");
                 }
             }
@@ -217,13 +222,14 @@
             //randomise squares function - generates random hex colour code for each square and resets border
             function new_round () {
 
+                //obvious lines in console to help track new rounds
                 console.log("#################################################")
                 console.log("#################################################")
                 console.log("starting new_round")
                 console.log("#################################################")
                 console.log("#################################################")
 
-                //can do multi-part objects instead of list of vars???
+                //set all boxes as variables and place in an array (could skip to just array in hindsight)
                 var box_1 = document.getElementById("js_block_1")
                 var box_2 = document.getElementById("js_block_2")
                 var box_3 = document.getElementById("js_block_3")
@@ -232,41 +238,45 @@
                 var box_6 = document.getElementById("js_block_6")
                 box_array = [box_1, box_2, box_3, box_4, box_5, box_6]
 
-                //gen new nums and write to boxes
                 console.log("setting new hex codes for array")
 
                 //sets counter for loop
                 var x = 0
 
-                //while counter is below 6 will loop setting the box number of loop number
+                //while counter is below 5, will loop applying random colours to boxes of index[loop number]
                 while (x <= 5) {
+                    //calls to hex_code generator for random numbers
                     new_code = hex_code_generator();
                     var new_code_len = new_code.length;
 
-                    //only adds to x if code is high enough
+                    //only adds to x and increases loop if hex_code is long enough
                     if (new_code_len == 7) {
                         box_array[x].style.background = new_code
                         x = x + 1
                     }
                 }
 
-                //pick box to be correct
                 console.log("setting new correct colour")
 
+                //setup variables for selecting correct box
                 var new_correct_colour = 0
                 var random_index = 6
 
+                //while loop as math.random had some under-expected results, ensures an actually fair number
                 while (random_index > 5) {
                     random_index = math.floor(math.random()*5)
                 }
+
+                //fetches background colour (in RGB) of correct box using just generated index
                 console.log("correct index is... " +random_index)
                 new_correct_colour = box_array[random_index].style.background;
                 console.log("new_correct_colour in RGB is... " +new_correct_colour)
 
-                //convert RGB to Hex value
+                //convert RGB to Hex value using another function
                 new_correct_colour = RGB_to_HEX (new_correct_colour);
                 console.log("new_correct_colour is... " +new_correct_colour)
 
+                //write correct hex code to the HTML clue
                 document.getElementById("html_hex_code").innerHTML = new_correct_colour;
                 console.log("new_correct_colour should be set")
                 
@@ -277,48 +287,54 @@
 
                 console.log("starting hexcode generator")
 
-                var new_hex_code = "#"
+                //sets variable
                 var gen_num = 0
 
-                    gen_num = gen_num + math.floor(math.random()*1000000);
-                    gen_num = "#" + gen_num
+                //generates a 6 digit (normally) number and adds it to a hash
+                gen_num = gen_num + math.floor(math.random()*1000000);
+                gen_num = "#" + gen_num
 
+                //more console logging for debugging and returns the hex code
                 console.log("gen number is... " +gen_num)
                 return gen_num
-
             }
 
+            //converts RBG code interpretted by JS into Hex code for my program to deal and set
             function RGB_to_HEX (RGB_arg) {
                 console.log("Converting RGB to HEX")
                 var final_hex = "#"
 
+                //splits the RGB string into parts on each comma
                 RGB_string = RGB_arg.split(",");
                 console.log("New RGB string is... " +RGB_string)
-                var R_val = this.R=parseInt( RGB_string[0].substring(4) );
-                var G_val = this.G=parseInt( RGB_string[1] );
-                var B_val = this.B=parseInt( RGB_string[2] );
 
+                //first parse ignores first 4 chars "RGB("
+                var R_val = this.R=parseInt(RGB_string[0].substring(4));
+                var G_val = this.G=parseInt(RGB_string[1]);
+                var B_val = this.B=parseInt(RGB_string[2]);
+
+                //more debugging consoles
                 console.log("R val is... " +R_val)
                 console.log("G val is... " +G_val)
                 console.log("B val is... " +B_val)
 
-                //to 16
+                //converts value to base 16
                 R_val = R_val.toString(16);
                 G_val = G_val.toString(16);
                 B_val = B_val.toString(16);
 
+                //even more debugging console stuff
                 console.log("New R val is... " +R_val)
                 console.log("New G val is... " +G_val)
                 console.log("New B val is... " +B_val)
 
+                //adds R, G, and B values onto a hash to make a coherent hex code and returns it
                 final_hex = final_hex + R_val + G_val + B_val;
                 console.log("final_hex is... " +final_hex)
                 return final_hex
             }
 
-            //var replace_me = "200"
-            //document.getElementById("score_val").innerHTML = replace_me;
-
+            //single new_round call to initiate a round on  page load
             new_round ();
 
         </script>
